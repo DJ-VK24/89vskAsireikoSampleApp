@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Project</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            font-family: 'Arial', sans-serif;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .btn-outline-success {
+            border-color: #6a11cb;
+            color: #6a11cb;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-success:hover {
+            background: #6a11cb;
+            color: #fff;
+        }
+        .shared-notes-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 800px;
+            margin: 50px auto;
+        }
+        .shared-notes-container h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .note-item {
+            background: #fff;
+            border-radius: 5px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .note-content {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: #000000;
+        }
+        .note-author {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+        .alert {
+            margin-top: 1rem;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'index.html' %}
+    {% block body %}
+    <div class="shared-notes-container">
+        {% if err %}
+        <div class="alert alert-warning">
+            Couldn't load shared notes. Please try again.
+        </div>
+        {% endif %}
+
+        <h3>Notes Shared with You</h3>
+
+        {% if items %}
+            {% for item in items %}
+            <div class="note-item">
+                <div class="note-content">
+                    {{ item[1] }}
+                </div>
+                {% if item[2] %}
+                <div class="note-author">
+                    Shared by: {{ item[2] }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="alert alert-info">
+                No notes have been shared with you yet.
+            </div>
+        {% endif %}
+    </div>
+    {% endblock body %}
+</body>
+</html>
