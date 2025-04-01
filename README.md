@@ -24,3 +24,6 @@ Lai aktivizētu kodu, ir nepieciešams rakstīt, izmantojot cmd:
 cd C:/sample_app
 flask --app web_app run --depug
 Pēc tam sekojiet saitei: Jebkurā pārlūkprogrammā: 127.0.0.0.0.1:5000/v1/home.
+
+
+Prezentācija: https://youtu.be/yHIp3R8Lfcg?si=xL-opiD_E5sTooup
